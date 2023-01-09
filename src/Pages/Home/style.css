@@ -1,17 +1,16 @@
 .hero {
     background-image: url('/public/images/bankTree.jpeg');
-    background-position: 0 -250px;
+    background-position: 0 -50px;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 400px;
+    height: 300px;
     position: relative;
 }
 
 .hero-content {
     position: relative;
     top: 2rem;
-    left: 25rem;
-    width: 334px;
+    width: 200px;
     background: white;
     padding: 2rem;
     text-align: left;
@@ -46,7 +45,32 @@
     /* 3 */
 }
 
-.features {
-    display: flex;
-    flex-direction: row;
+
+
+@media (min-width: 920px) {
+    .hero {
+        height: 400px;
+        background-position: 0% 33%;
+    }
+
+    .hero-content {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        width: 300px;
+        margin: 2rem;
+    }
+
+    .hero-content .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .hero-content .text {
+        font-size: 1.2rem;
+    }
+
+    .features {
+        display: flex;
+        flex-direction: column;
+    }
 }

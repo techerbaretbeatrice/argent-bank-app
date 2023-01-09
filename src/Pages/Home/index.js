@@ -5,7 +5,7 @@ import Footer from '../../components/Footer'
 
 const HomePage = () => {
     return <div>
-        <Header />
+        <Header withSignin />
         <main>
             <div className="hero">
                 <section className="hero-content">

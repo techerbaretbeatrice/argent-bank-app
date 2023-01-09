@@ -9,9 +9,9 @@ const Router = () => <BrowserRouter >
         <Routes>
             <Route path="/" element={<Home />}>
             </Route>
-            <Route path="signIn" element={<SignIn />}>
+            <Route path="/signIn" element={<SignIn />}>
             </Route>
-            <Route path="user" element={<User />} >
+            <Route path="/user" element={<User />} >
             </Route>
             <Route path="*" element={<Error />}>
             </Route>
@@ -32,6 +32,9 @@ function SignIn() {
 }
 
 function User() {
+    // chercher dans le store que le token est bien present
+    // si oui, tu renvoie le composant UserPage
+    // si non, tu Navigate to login
     return <div>
         <UserPage />
     </div>
