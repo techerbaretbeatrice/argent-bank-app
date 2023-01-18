@@ -17,10 +17,11 @@ const SignInPage = () => {
         console.log(form.password.value)
         await login(store, {
             email: userName,
-            password,
+            password, rememberMe: form.rememberMe.checked
         })
         navigate("/user")
     }
+
     return <div>
         <Header withSignin />
         <main className="main bg-dark">
@@ -37,7 +38,7 @@ const SignInPage = () => {
                         <input name='password' type="password" id="password" />
                     </div>
                     <div className="input-remember">
-                        <input type="checkbox" id="remember-me" />
+                        <input type="checkbox" name='rememberMe' id="remember-me" />
                         <label htmlFor="remember-me">Remember me</label>
                     </div>
 

@@ -11,10 +11,20 @@
     margin-bottom: 2rem;
 }
 
-
-
-.main.auto {
+#auto {
+    flex: 1 1;
     height: auto;
     padding-top: 0.2rem;
-    padding-bottom: 15px;
+    padding-bottom: 55px;
+}
+
+
+
+
+
+@media (min-width: 920px) {
+    .main {
+        flex: 1 1;
+        height: calc(100vh - 180px);
+    }
 }

@@ -3,7 +3,11 @@ import Api from "./Api";
 
 const loginSlice = createSlice({
     name: "login",
-    initialState: { token: null },
+    initialState: {
+        token: localStorage.getItem('jwt'),
+
+    },
+
     reducers: {
         signIn: (state, action) => {
             //{type:login/signIn, payload:{token}}
@@ -13,21 +17,31 @@ const loginSlice = createSlice({
             //{type: login/signOut}
             state.token = null
         },
+
     }
 
 })
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
     name: "user",
     initialState: {
         firstName: null,
         lastName: null,
+        openEditor: false,
     },
     reducers: {
         loadProfile: (state, action) => {
             //{type: user/loadProfile}
             state.firstName = action.payload.firstName
             state.lastName = action.payload.lastName
+        },
+        displayEditor: (state, action) => {
+            //{type: user/displayEditUsername}
+            state.openEditor = true
+        },
+        hideEditor: (state, action) => {
+            //{type: user/displayEditUsername}
+            state.openEditor = false
         },
         editProfile: (state, action) => {
             //{type: user/editProfile}
@@ -60,7 +74,7 @@ const accountAmountSlice = createSlice({
 })
 
 export const { signIn, signOut } = loginSlice.actions;
-export const { loadProfile, editProfile } = userSlice.actions;
+export const { loadProfile, displayEditor, editProfile } = userSlice.actions;
 export const { setCheckingAmount, setSavingAmount, setCreditAmount } = accountAmountSlice.actions;
 
 
@@ -75,8 +89,11 @@ export const store = configureStore({
 
 })
 
-export const login = async (store, { email, password }) => {
+export const login = async (store, { email, password, rememberMe }) => {
     const result = await Api.Login({ email, password })
+    if (rememberMe) {
+        localStorage.setItem('jwt', result.body.token)
+    }
     store.dispatch(signIn({
         token: result.body.token
     }))
@@ -85,8 +102,21 @@ export const login = async (store, { email, password }) => {
 
 export const loadUser = async (store) => {
     console.log(store.getState())
+    if (store.getState().login.token === null) {
+        return false
+    }
     const result = await Api.GetUserInfos(store.getState().login.token)
     store.dispatch(loadProfile({
+        firstName: result.body.firstName,
+        lastName: result.body.lastName
+    }))
+
+}
+
+export const updateUser = async (store, firstName, lastName) => {
+    console.log(store.getState())
+    const result = await Api.UpdateUserInfos(store.getState().login.token, firstName, lastName)
+    store.dispatch(editProfile({
         firstName: result.body.firstName,
         lastName: result.body.lastName
     }))
@@ -105,6 +135,13 @@ export const accountAmount = async (store) => {
     }))
     store.dispatch(setCreditAmount({
         creditAmount: creditAmountResult,
+    }))
+}
+
+export const logOut = async (store) => {
+    localStorage.clear()
+    store.dispatch(signOut({
+        token: null
     }))
 }
 

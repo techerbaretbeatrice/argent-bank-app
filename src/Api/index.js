@@ -27,6 +27,23 @@ const GetUserInfos = async (jwt) => {
     return json
 }
 
+const UpdateUserInfos = async (jwt, firstName, lastName) => {
+    const jsonResult = await fetch('http://localhost:3001/api/v1/user/profile', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${jwt}`
+        },
+        body: JSON.stringify({
+            firstName,
+            lastName,
+        })
+    })
+    const json = await jsonResult.json()
+    console.log(json)
+    return json
+}
+
 const GetCreditCardAmount = async () => {
     return 2500
 }
@@ -44,5 +61,6 @@ export default {
     GetCreditCardAmount,
     GetBankCheckingAmount,
     GetUserInfos,
-    GetBankSavingAmount
+    GetBankSavingAmount,
+    UpdateUserInfos,
 }

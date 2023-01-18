@@ -3,8 +3,11 @@ import Header from '../../components/Header'
 import AccountContent from '../../components/AccountContent'
 import Footer from '../../components/Footer'
 import { useSelector, useStore } from 'react-redux'
-import { accountAmount, loadUser } from '../../redux'
+import { accountAmount, loadUser, logout } from '../../redux'
 import { useEffect } from 'react'
+import NameEditor from '../../components/NameEditor'
+
+
 
 const UserPage = () => {
     const store = useStore()
@@ -16,14 +19,15 @@ const UserPage = () => {
         accountAmount(store)
     })
 
-
     return <div className='user-page'>
         <Header withSignout />
-        <main className='main bg-dark auto'>
+        <main className='main bg-dark' id='auto'>
             <div className="header">
                 <h1>Welcome back<br />{userName.firstName} {userName.lastName}</h1>
-                <button className="edit-button">Edit Name</button>
+                <NameEditor />
+
             </div>
+
             <AccountContent accountTitle="Argent Bank Checking" accountAmount={`${amount.checkingAmount}`} accountAmountDescription="Available Balance" />
             <AccountContent accountTitle="Argent Bank Saving" accountAmount={amount.savingAmount} accountAmountDescription="Available Balance" />
             <AccountContent accountTitle="Argent Bank credit Card" accountAmount={amount.creditAmount} accountAmountDescription="current Balance" />
