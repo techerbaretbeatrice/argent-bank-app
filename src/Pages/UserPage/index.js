@@ -6,15 +6,21 @@ import { useSelector, useStore } from 'react-redux'
 import { accountAmount, loadUser, logout } from '../../redux'
 import { useEffect } from 'react'
 import NameEditor from '../../components/NameEditor'
+import { useNavigate } from 'react-router'
 
 
 
 const UserPage = () => {
     const store = useStore()
     const userName = useSelector((state) => state.user)
+    const navigate = useNavigate()
+
     const amount = useSelector((state) => state.accountAmount)
     console.log(store)
     useEffect(() => {
+        if (store.getState().login.token === null) {
+            navigate('/')
+        }
         loadUser(store)
         accountAmount(store)
     })
