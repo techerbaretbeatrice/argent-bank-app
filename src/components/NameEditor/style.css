@@ -4,4 +4,39 @@
     color: #fff;
     font-weight: bold;
     padding: 10px;
+    border-radius: 2px;
+}
+
+.edit-button:hover {
+    color: rgb(109, 72, 155);
+    background: #fff;
+
+    border-color: rgb(109, 72, 155);
+}
+
+.input-field {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+}
+
+
+.save {
+    padding: 5px;
+    width: 100px;
+    margin-right: 5px;
+}
+
+.cancel {
+    padding: 5px;
+    width: 100px;
+    margin-left: 5px;
+}
+
+.first-name {
+    margin-right: 5px;
+}
+
+.last-name {
+    margin-left: 5px;
 }

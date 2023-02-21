@@ -58,6 +58,13 @@
     border-color: #00bc77;
     background-color: #00bc77;
     color: #fff;
+    border-radius: 2px;
+    outline: none;
+}
+
+.transaction-button:hover {
+    background-color: rgb(109, 72, 155);
+    border-color: rgb(109, 72, 155);
 }
 
 
