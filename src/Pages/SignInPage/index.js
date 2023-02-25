@@ -5,16 +5,19 @@ import { useStore } from 'react-redux'
 import { login } from '../../redux'
 import { useNavigate } from 'react-router'
 
+/**
+ *  sign in page
+ * @returns authentication form
+ */
+
 const SignInPage = () => {
     const store = useStore()
     const navigate = useNavigate()
-    console.log(store)
     const handleSubmit = async (evt) => {
         evt.preventDefault()
         const form = evt.currentTarget
         const password = form.password.value
         const userName = form.username.value
-        console.log(form.password.value)
         await login(store, {
             email: userName,
             password, rememberMe: form.rememberMe.checked

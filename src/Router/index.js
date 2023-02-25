@@ -1,5 +1,4 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
-import ErrorPage from '../Pages/ErrorPage'
 import SignInPage from '../Pages/SignInPage'
 import UserPage from '../Pages/UserPage'
 import HomePage from '../Pages/Home'
@@ -12,8 +11,6 @@ const Router = () => <BrowserRouter >
             <Route path="/signIn" element={<SignIn />}>
             </Route>
             <Route path="/user" element={<User />} >
-            </Route>
-            <Route path="*" element={<Error />}>
             </Route>
         </Routes>
     </div>
@@ -32,16 +29,11 @@ function SignIn() {
 }
 
 function User() {
-    // chercher dans le store que le token est bien present
-    // si oui, tu renvoie le composant UserPage
-    // si non, tu Navigate to login
     return <div>
         <UserPage />
     </div>
 }
 
-function Error() {
-    return <ErrorPage />
-}
+
 
 export default Router

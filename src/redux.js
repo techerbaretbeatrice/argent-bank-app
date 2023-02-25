@@ -1,6 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import Api from "./Api";
 
+//slice login
 const loginSlice = createSlice({
     name: "login",
     initialState: {
@@ -22,6 +23,7 @@ const loginSlice = createSlice({
 
 })
 
+//slice user
 export const userSlice = createSlice({
     name: "user",
     initialState: {
@@ -52,6 +54,7 @@ export const userSlice = createSlice({
     }
 })
 
+//slice account
 const accountAmountSlice = createSlice({
     name: "accountAmount",
     initialState: {
@@ -73,12 +76,13 @@ const accountAmountSlice = createSlice({
 
 })
 
+//actions
 export const { signIn, signOut } = loginSlice.actions;
 export const { loadProfile, displayEditor, editProfile } = userSlice.actions;
 export const { setCheckingAmount, setSavingAmount, setCreditAmount } = accountAmountSlice.actions;
 
 
-
+// configurate store
 export const store = configureStore({
     reducer: {
         login: loginSlice.reducer,
@@ -88,6 +92,8 @@ export const store = configureStore({
 
 
 })
+
+
 
 export const login = async (store, { email, password, rememberMe }) => {
     const result = await Api.Login({ email, password })
@@ -101,7 +107,6 @@ export const login = async (store, { email, password, rememberMe }) => {
 }
 
 export const loadUser = async (store) => {
-    console.log(store.getState())
     if (store.getState().login.token === null) {
         return false
     }

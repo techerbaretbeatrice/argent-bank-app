@@ -8,7 +8,6 @@ const Login = async (data) => {
         body: JSON.stringify(data)
     })
     const json = await jsonResult.json()
-    console.log(json)
     return json
 
 }
@@ -23,7 +22,6 @@ const GetUserInfos = async (jwt) => {
 
     })
     const json = await jsonResult.json()
-    console.log(json)
     return json
 }
 
@@ -40,22 +38,22 @@ const UpdateUserInfos = async (jwt, firstName, lastName) => {
         })
     })
     const json = await jsonResult.json()
-    console.log(json)
     return json
 }
 
 const GetCreditCardAmount = async () => {
-    return 2500
+    return 184.30
 }
 
 const GetBankSavingAmount = async () => {
-    return 1555
+    return 10928.42
 }
 
 const GetBankCheckingAmount = async () => {
-    return 200
+    return 2082.79
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     Login,
     GetCreditCardAmount,

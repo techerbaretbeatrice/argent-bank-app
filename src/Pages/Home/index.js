@@ -3,6 +3,9 @@ import Header from '../../components/Header'
 import FeatureItem from '../../components/FeatureItem'
 import Footer from '../../components/Footer'
 
+/**
+ * home page
+ */
 
 const HomePage = () => {
     return <div>

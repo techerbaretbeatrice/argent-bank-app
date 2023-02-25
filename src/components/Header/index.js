@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from 'react-router-dom'
 import './style.css'
 import { useSelector, useStore } from 'react-redux'
@@ -10,7 +11,6 @@ import { logOut } from '../../redux'
 const Header = (props) => {
     const store = useStore()
     const userName = useSelector((state) => state.user)
-    console.log(store)
     useEffect(() => {
         loadUser(store)
     })
@@ -29,13 +29,13 @@ const Header = (props) => {
             </Link>
             {props.withSignin &&
                 <div >
-                    <Link className="main-nav-item" href="./sign-in.html" to="/signIn">
+                    <Link className="main-nav-item" to="/signIn">
                         <i className="fa fa-user-circle"></i>
                         Sign In
                     </Link>
                 </div>}
             {props.withSignout && <div className='nav-user-page'>
-                <a className="main-nav-item sign-out" href="./sign-in.html">
+                <a className="main-nav-item sign-out" href="#">
                     <i className="fa fa-user-circle "></i>
                     {userName.firstName}
                 </a>

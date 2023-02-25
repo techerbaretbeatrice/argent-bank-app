@@ -19,7 +19,7 @@ const NameEditor = () => {
         {!user.openEditor && <button className={`edit-button ${``}`} onClick={() => store.dispatch(userSlice.actions.displayEditor())}>
             Edit Name
         </button>}
-        {user.openEditor && <form className='name-editor' onSubmit={submit}>
+        {user.openEditor && <form className='name-editor' action="#" onSubmit={submit}>
             <div className="input-container">
                 <label></label>
                 <input className="input-field first-name" name="firstName" defaultValue={user.firstName} />
